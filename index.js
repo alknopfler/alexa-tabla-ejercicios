@@ -91,13 +91,14 @@ const AudioPlayerEventHandler = {
                 const expectedPreviousToken = playbackInfo.token;
                 const offsetInMilliseconds = 0;
 
-                responseBuilder.addAudioPlayerPlayDirective(
-                    playBehavior,
-                    podcast.url,
-                    enqueueToken,
-                    offsetInMilliseconds,
-                    expectedPreviousToken,
-                );
+                const cardTitle = 'Tabla de ejercicios';
+                const cardContent = `Ejercicio: ${podcast.title}`;
+                const cardImage = `${podcast.image}`
+
+                responseBuilder
+                    .addAudioPlayerPlayDirective(playBehavior, podcast.url, enqueueToken, offsetInMilliseconds, expectedPreviousToken,)
+                    .speak(`Bien hecho! Este es el siguiente ejercicio: ${podcast.title}`)
+                    .withStandardCard(cardTitle, cardContent, cardImage, cardImage);
                 break;
             }
             case 'PlaybackFailed':
