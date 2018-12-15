@@ -418,7 +418,7 @@ const LoadPersistentAttributesRequestInterceptor = {
                 },
                 playbackInfo: {
                     playOrder: [...Array(constants.audioData.length).keys()],
-                    index: 0,
+                    index: 1,
                     offsetInMilliseconds: 0,
                     playbackIndexChanged: true,
                     token: '',
