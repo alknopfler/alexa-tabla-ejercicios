@@ -2,7 +2,7 @@
 
 exports.skill = {
     appId: 'amzn1.ask.skill.048ea22f-4cef-4da3-beb2-e32b6ad2e627',
-    dynamoDBTableName: 'Tabla de Ejercicios',
+    dynamoDBTableName: 'Tabla-de-Ejercicios',
 };
 
 exports.audioData = [
