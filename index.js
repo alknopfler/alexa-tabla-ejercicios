@@ -48,6 +48,7 @@ const AudioPlayerEventHandler = {
         } = handlerInput;
         const audioPlayerEventName = requestEnvelope.request.type.split('.')[1];
         const {
+            minutes,
             playbackSetting,
             playbackInfo
         } = await attributesManager.getPersistentAttributes();
@@ -58,6 +59,7 @@ const AudioPlayerEventHandler = {
                 playbackInfo.index = await getIndex(handlerInput);
                 playbackInfo.inPlaybackSession = true;
                 playbackInfo.hasPreviousPlaybackSession = true;
+                minutes.count += 1
                 break;
             case 'PlaybackFinished':
                 playbackInfo.inPlaybackSession = false;
@@ -128,16 +130,15 @@ const StartPlaybackHandler = {
     async canHandle(handlerInput) {
         const playbackInfo = await getPlaybackInfo(handlerInput);
         const request = handlerInput.requestEnvelope.request;
-        console.log('--StartPlaybackHandler --');
         if (!playbackInfo.inPlaybackSession) {
-            return request.type === 'IntentRequest' && request.intent.name === 'acordeIntent';
+            return request.type === 'IntentRequest' && request.intent.name === 'entrenamientoIntent';
         }
         if (request.type === 'PlaybackController.PlayCommandIssued') {
             return true;
         }
 
         if (request.type === 'IntentRequest') {
-            return request.intent.name === 'acordeIntent' ||
+            return request.intent.name === 'entrenamientoIntent' ||
                 request.intent.name === 'AMAZON.ResumeIntent';
         }
     },
@@ -151,7 +152,6 @@ const NextPlaybackHandler = {
     async canHandle(handlerInput) {
         const playbackInfo = await getPlaybackInfo(handlerInput);
         const request = handlerInput.requestEnvelope.request;
-        console.log('--NextPlaybackHandler --');
 
         return playbackInfo.inPlaybackSession &&
             (request.type === 'PlaybackController.NextCommandIssued' ||
@@ -166,7 +166,6 @@ const PreviousPlaybackHandler = {
     async canHandle(handlerInput) {
         const playbackInfo = await getPlaybackInfo(handlerInput);
         const request = handlerInput.requestEnvelope.request;
-        console.log('--PreviousPlaybackHandler --');
 
         return playbackInfo.inPlaybackSession &&
             (request.type === 'PlaybackController.PreviousCommandIssued' ||
@@ -181,7 +180,6 @@ const PausePlaybackHandler = {
     async canHandle(handlerInput) {
         const playbackInfo = await getPlaybackInfo(handlerInput);
         const request = handlerInput.requestEnvelope.request;
-        console.log('--PausePlaybackHandler --');
 
         return playbackInfo.inPlaybackSession &&
             request.type === 'IntentRequest' &&
@@ -198,7 +196,6 @@ const LoopOnHandler = {
     async canHandle(handlerInput) {
         const playbackInfo = await getPlaybackInfo(handlerInput);
         const request = handlerInput.requestEnvelope.request;
-        console.log('--LoopON --');
 
         return playbackInfo.inPlaybackSession &&
             request.type === 'IntentRequest' &&
@@ -219,7 +216,6 @@ const LoopOffHandler = {
     async canHandle(handlerInput) {
         const playbackInfo = await getPlaybackInfo(handlerInput);
         const request = handlerInput.requestEnvelope.request;
-        console.log('--LoopOFF --');
         return playbackInfo.inPlaybackSession &&
             request.type === 'IntentRequest' &&
             request.intent.name === 'AMAZON.LoopOffIntent';
@@ -239,7 +235,6 @@ const ShuffleOnHandler = {
     async canHandle(handlerInput) {
         const playbackInfo = await getPlaybackInfo(handlerInput);
         const request = handlerInput.requestEnvelope.request;
-        console.log('--ShuffleON --');
         return playbackInfo.inPlaybackSession &&
             request.type === 'IntentRequest' &&
             request.intent.name === 'AMAZON.ShuffleOnIntent';
@@ -263,7 +258,6 @@ const ShuffleOffHandler = {
     async canHandle(handlerInput) {
         const playbackInfo = await getPlaybackInfo(handlerInput);
         const request = handlerInput.requestEnvelope.request;
-        console.log('--ShuffleOFF --');
         return playbackInfo.inPlaybackSession &&
             request.type === 'IntentRequest' &&
             request.intent.name === 'AMAZON.ShuffleOffIntent';
@@ -288,7 +282,6 @@ const StartOverHandler = {
     async canHandle(handlerInput) {
         const playbackInfo = await getPlaybackInfo(handlerInput);
         const request = handlerInput.requestEnvelope.request;
-        console.log('--StartOverHandler --');
 
         return playbackInfo.inPlaybackSession &&
             request.type === 'IntentRequest' &&
@@ -325,7 +318,7 @@ const NoHandler = {
     async handle(handlerInput) {
         const playbackInfo = await getPlaybackInfo(handlerInput);
 
-        playbackInfo.index = 0;
+        playbackInfo.index = 1;
         playbackInfo.offsetInMilliseconds = 0;
         playbackInfo.playbackIndexChanged = true;
         playbackInfo.hasPreviousPlaybackSession = false;
@@ -344,11 +337,11 @@ const HelpHandler = {
         let message;
 
         if (!playbackInfo.hasPreviousPlaybackSession) {
-            message = 'Soy tu profesor de guitarra. Puedes pedirme reproducir los acordes para que puedas practicarlos y además te los mostraré en tu dispositivo o app Alexa. Una vez que aprendas el acorde, podrás decir, siguiente o previo para ir conociendo el resto de acordes. En cualquier momento, puedes parar y continuar con la reproducción. ';
+            message = 'Puedes pedirme empezar un entrenamiento y te iré mostrando en tarjetas o bien en tu App Alexa cómo debes hacer el ejercicio. Cada 5 segundos te avisaré con un beep, y cuando finalice el ejercicio con un sonido diferente. También podrás decir, siguiente o previo para ir conociendo el resto de ejercicios. En cualquier momento, puedes parar y continuar con el entrenamiento. ';
         } else if (!playbackInfo.inPlaybackSession) {
-            message = `Estás aprendiendo el acorde ${constants.audioData[playbackInfo.index].title}. ¿Quieres continuar con la reproducción?`;
+            message = `Estás haciendo el ejercicio ${constants.audioData[playbackInfo.index].title}. ¿Quieres continuar con el entrenamiento?`;
         } else {
-            message = 'Soy tu profesor de guitarra. Puedes pedirme reproducir los acordes para que puedas practicarlos y además te los mostraré en tu dispositivo o app Alexa. Una vez que aprendas el acorde, podrás decir, siguiente o previo para ir conociendo el resto de acordes. En cualquier momento, puedes parar y continuar con la reproducción. ';
+            message = 'Puedes pedirme empezar un entrenamiento y te iré mostrando en Tarjetas o bien en tu App Alexa cómo debes hacer el ejercicio. Cada 5 segundos te avisaré con un beep, y cuando finalice el ejercicio con un sonido diferente. También podrás decir, siguiente o previo para ir conociendo el resto de ejercicios. En cualquier momento, puedes parar y continuar con el entrenamiento. ';
         }
 
         return handlerInput.responseBuilder
@@ -470,7 +463,6 @@ async function canThrowCard(handlerInput) {
 
 const controller = {
     async play(handlerInput) {
-        console.log('--Controller PLAY--');
         const {
             attributesManager,
             responseBuilder
@@ -489,13 +481,13 @@ const controller = {
         playbackInfo.nextStreamEnqueued = false;
 
         responseBuilder
-            .speak(`Este es el acorde ${podcast.title}`)
+            .speak(`Este es el ejercicio ${podcast.title}`)
             .withShouldEndSession(true)
             .addAudioPlayerPlayDirective(playBehavior, podcast.url, token, offsetInMilliseconds, null);
 
         if (await canThrowCard(handlerInput)) {
-            const cardTitle = 'Profesor de Guitarra';
-            const cardContent = `Acorde: ${podcast.title}`;
+            const cardTitle = 'Tabla de ejercicios';
+            const cardContent = `Ejercicio: ${podcast.title}`;
             const cardImage = `${podcast.image}`
             responseBuilder.withStandardCard(cardTitle, cardContent, cardImage, cardImage);
         }
@@ -503,13 +495,11 @@ const controller = {
         return responseBuilder.getResponse();
     },
     stop(handlerInput) {
-        console.log('--Controller STOP--');
         return handlerInput.responseBuilder
             .addAudioPlayerStopDirective()
             .getResponse();
     },
     async playNext(handlerInput) {
-        console.log('--Controller PLAYNEXT --');
         const {
             playbackInfo,
             playbackSetting,
@@ -522,7 +512,7 @@ const controller = {
             playbackInfo.offsetInMilliseconds = 0;
             playbackInfo.playbackIndexChanged = true;
             return handlerInput.responseBuilder
-                .speak('Bien!!! has aprendido todos los principales acordes de guitarra. ¡Enhorabuena, pronto serás una rock star!')
+                .speak('Bien!!! has terminado todos los ejercicios. ¡Enhorabuena, te superas a tí mismo continuamente!')
                 .addAudioPlayerStopDirective()
                 .withShouldEndSession(true)
                 .getResponse();
@@ -535,7 +525,6 @@ const controller = {
         return this.play(handlerInput);
     },
     async playPrevious(handlerInput) {
-        console.log('--Controller PLAYPREVIOUS --');
         const {
             playbackInfo,
             playbackSetting,
@@ -548,7 +537,7 @@ const controller = {
                 previousIndex += constants.audioData.length;
             } else {
                 return handlerInput.responseBuilder
-                    .speak('Estás en el principio de la lista de acordes.')
+                    .speak('Estás en el principio de la lista de ejercicios.')
                     .addAudioPlayerStopDirective()
                     .getResponse();
             }

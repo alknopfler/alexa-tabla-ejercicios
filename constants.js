@@ -23,7 +23,7 @@ exports.audioData = [
     },
     {
         title: 'Descanso (Duración 30 segundos)',
-        image: '',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/descanso.jpg',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
@@ -37,6 +37,11 @@ exports.audioData = [
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
+        title: 'Descanso (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/descanso.jpg',
+        url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
+    },
+    {
         title: 'Rodillas Arriba (Duración 30 segundos)',
         image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/RodillasArriba.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
@@ -47,6 +52,11 @@ exports.audioData = [
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
+        title: 'Descanso (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/descanso.jpg',
+        url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
+    },
+    {
         title: 'Flexión de rodillas hacia abajo (Duración de 30 segundos)',
         image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/RodillasAbajo.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
@@ -54,6 +64,11 @@ exports.audioData = [
     {
         title: 'Fondos apoyando codos (Duración 30 segundos)',
         image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/FondosCodos.png',
+        url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
+    },
+    {
+        title: 'Descanso (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/descanso.jpg',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
