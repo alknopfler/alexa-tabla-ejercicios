@@ -7,74 +7,63 @@ exports.skill = {
 
 exports.audioData = [
     {
-        title: 'Saltos en Tijera (Duración 30 seg)',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Cmaj.jpg',
+        title: 'Inicial',
+        image: '',
+        url: '',
+    },
+    {
+        title: 'Saltos en Tijera (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/Tijera.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
-        title: 'Do menor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Cmin.jpg',
+        title: 'Steps (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/Steps.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
-        title: 'Re Mayor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Dmaj.jpg',
+        title: 'Descanso (Duración 30 segundos)',
+        image: '',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
-        title: 'Re menor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Dmin.jpg',
+        title: 'Sentado en la pared (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/SentadoEnPared.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
-        title: 'Mi Mayor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Emaj.jpg',
+        title: 'Fondos (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/Fondos.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
-        title: 'Mi menor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Emin.jpg',
+        title: 'Rodillas Arriba (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/RodillasArriba.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
-        title: 'Fa Mayor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Fmaj.jpg',
+        title: 'Abdominales (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/Abdominales.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
-        title: 'Fa menor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Fmin.jpg',
+        title: 'Flexión de rodillas hacia abajo (Duración de 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/RodillasAbajo.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
-        title: 'Sol Mayor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Gmaj.jpg',
+        title: 'Fondos apoyando codos (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/FondosCodos.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
-        title: 'Sol menor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Gmin.jpg',
+        title: 'Sentadillas (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/Sentadillas.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
     {
-        title: 'La Mayor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Amaj.jpg',
+        title: 'Fondos levantando una mano (Duración 30 segundos)',
+        image: 'https://raw.githubusercontent.com/alknopfler/alexa-tabla-ejercicios/master/images/FondoAUnaMano.png',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
-    {
-        title: 'La menor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Amin.jpg',
-        url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
-    },
-    {
-        title: 'Si Mayor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Bjam.jpg',
-        url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
-    },
-    {
-        title: 'Si menor',
-        image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Bmin.jpg',
-        url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
-    },
-
 ];

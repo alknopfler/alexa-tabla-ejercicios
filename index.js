@@ -15,21 +15,22 @@ const LaunchRequestHandler = {
     },
 
     async handle(handlerInput) {
-        console.log('--Launch Request --');
         const playbackInfo = await getPlaybackInfo(handlerInput);
         let message;
         let reprompt;
 
         if (!playbackInfo.hasPreviousPlaybackSession) {
-            message = 'Bienvenido a la skill Profesor de guitarra. ¿Qué quieres aprender hoy?';
-            reprompt = 'Puedes decir, enséñame un nuevo acorde';
+            message = 'Bienvenido a la Tabla de Ejercicios. ¿Qué quieres hacer? Pídeme ayuda si tienes dudas.';
+            reprompt = 'Puedes decir, comienza un entrenamiento, o bien, dime los minutos totales desde que hago ejercicio';
         } else {
             playbackInfo.inPlaybackSession = false;
-            message = `Estabas practicando el acorde ${constants.audioData[playbackInfo.playOrder[playbackInfo.index]].title}. ¿Quieres seguir reproduciendo el acorde?`;
+            message = `Estabas haciendo el entrenamiento de ${constants.audioData[playbackInfo.playOrder[playbackInfo.index]].title}. ¿Quieres continuar con el entrenamiento?`;
+            reprompt = 'Responde SI para continuar por donde lo dejaste, o bien responde NO para empezar un entrenamiento desde el principio'
         }
 
         return handlerInput.responseBuilder
             .speak(message)
+            .reprompt(reprompt)
             .withShouldEndSession(false)
             .getResponse();
     },
@@ -40,7 +41,6 @@ const AudioPlayerEventHandler = {
         return handlerInput.requestEnvelope.request.type.startsWith('AudioPlayer.');
     },
     async handle(handlerInput) {
-        console.log('--AudioPlayer Handler --');
         const {
             requestEnvelope,
             attributesManager,
@@ -54,32 +54,28 @@ const AudioPlayerEventHandler = {
 
         switch (audioPlayerEventName) {
             case 'PlaybackStarted':
-                console.log('--PlaybackStarted --');
                 playbackInfo.token = getToken(handlerInput);
                 playbackInfo.index = await getIndex(handlerInput);
                 playbackInfo.inPlaybackSession = true;
                 playbackInfo.hasPreviousPlaybackSession = true;
                 break;
             case 'PlaybackFinished':
-                console.log('--PlaybackFinished --');
                 playbackInfo.inPlaybackSession = false;
                 playbackInfo.hasPreviousPlaybackSession = false;
                 playbackInfo.nextStreamEnqueued = false;
                 break;
             case 'PlaybackStopped':
-                console.log('--PlaybackStopped --');
                 playbackInfo.token = getToken(handlerInput);
                 playbackInfo.index = await getIndex(handlerInput);
                 playbackInfo.offsetInMilliseconds = getOffsetInMilliseconds(handlerInput);
                 break;
             case 'PlaybackNearlyFinished':
             {
-                console.log('--PlaybackNearlyFinished --');
                 if (playbackInfo.nextStreamEnqueued) {
                     break;
                 }
 
-                const enqueueIndex = (playbackInfo.index ) % constants.audioData.length;
+                const enqueueIndex = (playbackInfo.index + 1) % constants.audioData.length;
 
                 if (enqueueIndex === 0 && !playbackSetting.loop) {
                     break;
