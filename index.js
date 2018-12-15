@@ -148,6 +148,33 @@ const StartPlaybackHandler = {
     },
 };
 
+const StartTotalHandler = {
+    async canHandle(handlerInput) {
+        const playbackInfo = await getPlaybackInfo(handlerInput);
+        const request = handlerInput.requestEnvelope.request;
+        if (!playbackInfo.inPlaybackSession) {
+            return request.type === 'IntentRequest' && request.intent.name === 'totalIntent';
+        }
+        if (request.type === 'PlaybackController.PlayCommandIssued') {
+            return true;
+        }
+
+        if (request.type === 'IntentRequest') {
+            return request.intent.name === 'totalIntent' ||
+                request.intent.name === 'AMAZON.ResumeIntent';
+        }
+    },
+    async handle(handlerInput) {
+        const minutes = await getMinutes(handlerInput);
+
+        return handlerInput.responseBuilder
+            .speak(`El tiempo de ejercicio desde que empezaste a usar la skill es: ${minutes.count} minutos`)
+            .withShouldEndSession(true)
+            .getResponse();
+
+    },
+};
+
 
 const NextPlaybackHandler = {
     async canHandle(handlerInput) {
@@ -448,6 +475,11 @@ async function getPlaybackInfo(handlerInput) {
     return attributes.playbackInfo;
 }
 
+async function getMinutes(handlerInput) {
+    const attributes = await handlerInput.attributesManager.getPersistentAttributes();
+    return attributes.minutes;
+}
+
 async function canThrowCard(handlerInput) {
     const {
         requestEnvelope,
@@ -599,6 +631,7 @@ exports.handler = skillBuilder
         YesHandler,
         NoHandler,
         StartPlaybackHandler,
+        StartTotalHandler,
         NextPlaybackHandler,
         PreviousPlaybackHandler,
         PausePlaybackHandler,
