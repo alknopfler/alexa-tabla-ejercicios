@@ -1,0 +1,105 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "profesor de guitarra",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PauseIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ResumeIntent",
+          "samples": []
+        },
+        {
+          "name": "acordeIntent",
+          "slots": [],
+          "samples": [
+            "ver listado de acordes",
+            "listado de acordes",
+            "acordes",
+            "para practicar un acorde",
+            "para practicar un nuevo acorde",
+            "para practicar los acordes",
+            "para practicar acordes",
+            "para practicar con los acordes",
+            "ensayar con los acordes",
+            "ensayar los acordes",
+            "ensayar acordes",
+            "para ensayar los acordes",
+            "para ensayar acordes",
+            "para ensayar un acorde",
+            "muéstrame un acorde",
+            "y muéstrame un acorde",
+            "muéstrame un nuevo acorde",
+            "y muéstrame un nuevo acorde",
+            "quiero aprender a tocar un acorde",
+            "y quiero aprender a tocar un acorde",
+            "y quiero aprender a tocar acordes",
+            "quiero aprender a tocar acordes",
+            "y enséñame los acordes",
+            "y enséñame los principales acordes",
+            "y enséñame acordes",
+            "y enséñame un acorde",
+            "y enséñame un nuevo acorde",
+            "enséñame los acordes",
+            "enséñame los principales acordes",
+            "enséñame acordes",
+            "enséñame un acorde",
+            "enséñame un nuevo acorde",
+            "quiero practicar un acorde",
+            "quiero practicar un nuevo acorde",
+            "practicar un acorde",
+            "practicar un nuevo acorde",
+            "practicar acordes"
+          ]
+        },
+        {
+          "name": "AMAZON.LoopOffIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.LoopOnIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ShuffleOffIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ShuffleOnIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StartOverIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        }
+      ],
+      "types": []
+    }
+  }
+}
