@@ -437,6 +437,9 @@ const LoadPersistentAttributesRequestInterceptor = {
                     inPlaybackSession: false,
                     hasPreviousPlaybackSession: false,
                 },
+                minutes: {
+                    count: 0,
+                },
             });
         }
     },

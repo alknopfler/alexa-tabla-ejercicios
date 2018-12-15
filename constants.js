@@ -7,7 +7,7 @@ exports.skill = {
 
 exports.audioData = [
     {
-        title: 'Do Mayor',
+        title: 'Saltos en Tijera (Duración 30 seg)',
         image: 'https://raw.githubusercontent.com/alknopfler/alexa-profesor-guitarra/master/images/Cmaj.jpg',
         url: 'https://feeds.soundcloud.com/stream/545120544-alberto-morgante-758035286-campana-ejercicio.mp3',
     },
